@@ -19,49 +19,51 @@
     <!-- Contenedor principal de Bootstrap: centra el contenido y le da un ancho máximo -->
     <div class="container">
 
+        <!-- Alerta de Bootstrap para mostrar errores o éxito -->
+        <div id="alertaFormulario" class="alert alert-danger d-none" role="alert">
+            <!-- El contenido será reemplazado por JavaScript -->
+        </div>
+
+
         <!-- Título centrado y con margen inferior -->
         <h1 class="text-center mb-4">Formulario Completo con Todos los Tipos</h1>
         <!-- text-center: centra el texto -->
         <!-- mb-4: margen inferior de 1.5rem -->
 
         <!-- FORMULARIO principal -->
-        <form>
-            <!-- Agrupación de campos de texto -->........
-            <fieldset class="mb-4"> <!-- fieldset agrupa inputs relacionados -->
-                <legend>Entradas de texto (input type)</legend> <!-- Título del grupo -->
+        <form id="formularioValidado"> <!-- id necesario para aplicar validación en JS -->
+            <!-- Agrupación de campos de texto -->
+            <fieldset class="mb-4">
+                <legend>Entradas de texto (input type)</legend>
 
-                <!-- Input de tipo texto -->
-                <div class="mb-3"> <!-- mb-3: margen inferior de 1rem -->
+                <!-- Input de tipo texto (Nombre) -->
+                <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre (text)</label>
-                    <!-- class="form-label": estilo para etiquetas de formularios -->
                     <input type="text" class="form-control" id="nombre" placeholder="Tu nombre">
-                    <!-- form-control: convierte el input en un campo estilizado -->
-                    <!-- id="nombre": permite asociar el label y acceder con JS -->
-                    <!-- placeholder: texto dentro del input hasta que se escriba -->
+                    <div class="invalid-feedback">El nombre no puede estar vacío.</div>
+                    <!-- Mensaje si no se escribe nada -->
                 </div>
 
                 <!-- Email -->
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo electrónico (email)</label>
                     <input type="email" class="form-control" id="email" placeholder="ejemplo@email.com">
-                    <!-- type="email": valida que sea un correo válido -->
+                    <div class="invalid-feedback">Ingresa un correo válido.</div> <!-- Mensaje si no es válido -->
                 </div>
 
-                <!-- Grupo para contraseña con icono tipo ojo -->
+                <!-- Contraseña con ojito -->
                 <div class="mb-3 position-relative">
                     <label for="password" class="form-label">Contraseña (password)</label>
-
-                    <!-- Agrupamos el input y el botón del ojito con Bootstrap input-group -->
                     <div class="input-group">
                         <input type="password" class="form-control" id="password" placeholder="********">
-
-                        <!-- Botón con ícono de ojito al lado del input -->
                         <button class="btn btn-outline-secondary" type="button" id="togglePassword">
                             <i class="bi bi-eye-slash" id="iconoOjo"></i>
-                            <!-- Bootstrap Icons: ojo cerrado -->
                         </button>
                     </div>
+                    <div class="invalid-feedback">La contraseña debe tener al menos 8 caracteres.</div>
+                    <!-- Mensaje de validación -->
                 </div>
+
 
                 <!-- Número -->
                 <div class="mb-3">
@@ -223,7 +225,57 @@
         });
     </script>
 
-</body>
+    <script>
+        // Capturamos el formulario por su ID
+        const formulario = document.getElementById("formularioValidado");
 
+        // Capturamos los campos del formulario por sus ID
+        const nombre = document.getElementById("nombre");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+
+        // Al enviar el formulario, se ejecuta esta función
+        formulario.addEventListener("submit", function (e) {
+            e.preventDefault(); // Evita que se envíe sin validar
+
+            let errores = []; // Creamos una lista para acumular errores
+
+            // Limpiamos errores anteriores (quitar bordes rojos si ya estaban)
+            [nombre, email, password].forEach(campo => {
+                campo.classList.remove("is-invalid"); // Elimina la clase de error visual
+            });
+
+            // Validación del campo "nombre"
+            if (nombre.value.trim() === "") {
+                errores.push("El nombre no puede estar vacío.");
+                nombre.classList.add("is-invalid"); // Agrega borde rojo si hay error
+            }
+
+            // Validación del campo "email" usando una expresión regular
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Verifica formato típico de email
+            if (!emailRegex.test(email.value)) {
+                errores.push("El correo electrónico no es válido.");
+                email.classList.add("is-invalid");
+            }
+
+            // Validación del campo "contraseña"
+            if (password.value.length < 8) {
+                errores.push("La contraseña debe tener al menos 8 caracteres.");
+                password.classList.add("is-invalid");
+            }
+
+            // Mostrar mensaje si hay errores o enviar si está correcto
+            if (errores.length > 0) {
+                // Si hay errores, mostrar una alerta con todos
+                alert("Corrige los siguientes errores:\n\n" + errores.join("\n"));
+            } else {
+                // Si no hay errores, mostrar mensaje de éxito
+                alert("Formulario enviado correctamente ✅");
+                // Aquí podrías enviar los datos con AJAX o this.submit()
+            }
+        });
+    </script>
+
+</body>
 
 </html>
