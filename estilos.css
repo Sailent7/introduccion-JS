@@ -1,0 +1,134 @@
+/* General */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Elimina el scroll horizontal */
+    overflow-y: hidden;
+    /* Elimina el scroll vertical */
+    background-color: #121220;
+    /* Fondo oscuro con matiz morado */
+    color: #e0e0ff;
+    /* Color de texto claro */
+    font-family: 'Courier New', Courier, monospace;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Foto personal */
+.foto_personal {
+    width: 90px;
+    /* Ajusta el tamaño de la imagen (puedes cambiar este valor) */
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Contenedores */
+#contenedor_superior,
+#contenedor_central,
+#contenedor_inferior {
+    background-color: #1a1a2e;
+    /* Azul oscuro */
+    border: 2px solid #8a2be2;
+    /* Borde morado */
+    box-shadow: 0 0 12px #8a2be2;
+    /* Sombra morada */
+    padding: 20px;
+    border-radius: 12px;
+    margin: 10px auto;
+    /* 10px de margen a los lados y centrado */
+    width: calc(100% - 20px);
+    /* Resta 20px para los márgenes de 10px a cada lado */
+}
+
+/* Descripción y experiencia */
+.contenedor_descripcion,
+.contenedor_experiencia {
+    background-color: #2e2e4d;
+    /* Fondo ligeramente más claro */
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 400px;
+    box-shadow: inset 0 0 10px #8a2be2;
+    /* Sombra interna morada */
+}
+
+/* Títulos grandes */
+h4 {
+    color: #8a2be2;
+    /* Títulos morados */
+    border-bottom: 2px solid #8a2be2;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+/* Títulos pequeños (p) */
+p {
+    color: #dcdcff;
+    /* Color claro para los textos */
+    font-size: 16px;
+}
+
+/* Footer */
+#contenedor_footer p {
+    margin: 10px;
+    padding: 5px;
+    font-size: 16px;
+    color: #ccccff;
+    /* Color claro para los textos del footer */
+}
+
+/* Header y Footer a 10px de margen, ocupando toda la pantalla */
+#contenedor_superior,
+#contenedor_inferior {
+    margin: 10px auto;
+    /* Espacio de 10px entre los bordes y la pantalla */
+    width: calc(100% - 20px);
+    /* Los contenedores ocupan todo el ancho menos los márgenes */
+}
+
+/* Ajuste para evitar el scroll y mantener el contenido sin desbordar */
+body {
+    padding: 0;
+    min-height: 100vh;
+    /* Ocupa toda la altura sin scroll */
+}
+
+/* Asegurarse de que los contenedores estén distribuidos correctamente */
+#contenedor_superior,
+#contenedor_inferior,
+#contenedor_central {
+    width: calc(100% - 20px);
+    /* Contenedores con margen de 10px a los lados */
+    margin: 10px auto;
+    /* 10px de margen a los lados */
+}
+
+/* Añadir una separación entre las sombras de los contenedores */
+#contenedor_superior {
+    margin-bottom: 10px;
+    /* Separación entre el contenedor superior y el central */
+}
+
+#contenedor_central {
+    margin-bottom: 10px;
+    /* Separación entre el contenedor central y el inferior */
+}
+
+/* Agregar margen adicional entre el contenedor inferior y el footer */
+#contenedor_inferior {
+    margin-bottom: 10px;
+    /* Separación entre el contenedor inferior y el footer */
+}
+
+footer i {
+    color: mediumslateblue;
+    /* Cambiar el color de los iconos a morado */
+}
