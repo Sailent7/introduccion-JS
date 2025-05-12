@@ -1,0 +1,42 @@
+body {
+    background-color: #121212;
+    color: #ccfb11;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1,
+legend,
+label {
+    color: #76ff2c;
+    text-shadow: 0 0 4px #ffffff66;
+}
+
+input,
+select,
+textarea {
+    background-color: #1f1f1f !important;
+    color: #d9ff2f !important;
+    border: 1px solid #444 !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #aaaaaa;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #00d1ff;
+    box-shadow: 0 0 10px #00d1ff66;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    box-shadow: 0 0 5px #00d1ff99;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004a9f;
+}
