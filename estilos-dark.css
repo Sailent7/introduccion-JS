@@ -1,42 +1,103 @@
+/* Ocupa toda la pantalla y centra el formulario */
+html,
 body {
-    background-color: #121212;
-    color: #ccfb11;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
 }
 
-h1,
-legend,
+/* Estilo general del formulario */
+form {
+    width: 95%;
+    height: 95%;
+    margin: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 25px;
+}
+
+/* Título centrado dentro del formulario */
+form h2 {
+    text-align: left;
+    font-size: 50px;
+    color: #222;
+    margin: 0 0 30px 0;
+}
+
+/* Fila de campos en 3 columnas */
+.fila {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Cada campo ocupa una columna */
+.campo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Etiquetas */
 label {
-    color: #76ff2c;
-    text-shadow: 0 0 4px #ffffff66;
+    font-weight: bold;
+    margin-bottom: 6px;
 }
 
+/* Inputs y selects */
 input,
-select,
-textarea {
-    background-color: #1f1f1f !important;
-    color: #d9ff2f !important;
-    border: 1px solid #444 !important;
+select {
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
 }
 
-input::placeholder,
-textarea::placeholder {
-    color: #aaaaaa;
+/* Archivos: menos padding */
+input[type="file"] {
+    padding: 4px;
 }
 
-.form-control:focus,
-.form-select:focus {
-    border-color: #00d1ff;
-    box-shadow: 0 0 10px #00d1ff66;
+/* Botones */
+.botones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
 }
 
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    box-shadow: 0 0 5px #00d1ff99;
+button {
+    padding: 10px 20px;
+    font-size: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #004a9f;
+#guardar {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#cancelar {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Errores */
+.mensaje-error {
+    color: red;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.error {
+    border: 2px solid red;
+    background-color: #ffeaea;
 }
